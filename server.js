@@ -2,7 +2,8 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const port = 8080;
-
+const recipeData = require("./controllers/recipe");
+const nutertionHandle = require("./contollers/Nutertion.controller");
 const mongoose = require("mongoose");
 const {
   createUser,
@@ -21,15 +22,14 @@ mongoose
   .then(() => console.log("Connected"))
   .catch((err) => console.log(err));
 app.use(express.json());
-const recipeData =require('./controllers/recipe')
-app.use(cors());
-const nutertionHandle = require('./contollers/Nutertion.controller')
-app.get("/", (req, res) => res.send("Hello World!"));
-app.get("/:email", getUser);
-app.put("/:email", updateUser);
-app.post("/createUser", createUser);
-app.get('/nuteri', nutertionHandle);
-app.get('/recipe',recipeData);
 
+app.use(cors());
+
+app.get("/", (req, res) => res.send("Hello World!"));
+app.get("/user/:email", getUser);
+app.put("/user/:email", updateUser);
+app.post("/user/createUser", createUser);
+app.get("/nuteri", nutertionHandle);
+app.get("/recipe", recipeData);
 
 app.listen(port, () => console.log(`Example app listening on port 8080!`));
