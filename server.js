@@ -9,6 +9,7 @@ const {
   createUser,
   getUser,
   updateUser,
+  updateFav,
 } = require("./controllers/userdb.controller");
 
 mongoose
@@ -29,6 +30,8 @@ app.get("/", (req, res) => res.send("Hello World!"));
 app.get("/user/:email", getUser);
 app.put("/user/:email", updateUser);
 app.post("/user/createUser", createUser);
+// http://localhost:8080/addFiv/${this.props.auth0.user.email}`
+app.put("/addFiv/:email", updateFav);
 app.get("/nuteri", nutertionHandle);
 app.get("/recipe", recipeData);
 

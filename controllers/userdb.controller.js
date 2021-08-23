@@ -44,8 +44,27 @@ const updateUser = (req, res) => {
     });
 };
 
+
+const updateFav = (req , res ) => {
+  users
+  .findOneAndUpdate(
+    { email: req.params.email },
+    { $set: req.body },
+    { new: true }
+  )
+  .then((item) => {
+    res.status(200).send(item);
+  })
+  .catch((err) => {
+    res.status(400).send(err);
+  });
+
+}
 module.exports = {
   createUser,
   getUser,
   updateUser,
+  updateFav,
 };
+
+
