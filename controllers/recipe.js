@@ -1,10 +1,11 @@
 const axios = require("axios");
 require("dotenv").config();
+const key = process.env.RECIPE_KEY;
+const app_id = process.env.RECIPE_APP_ID;
 
 function recipeData(req, res) {
   let typeRecipe = req.query.q;
-  let key = "e78697484bbf4d176dad922de1637988";
-  let app_id = "d7161d0c";
+
   let recipeURL = `https://api.edamam.com/api/recipes/v2?type=public&q=${typeRecipe}&app_id=${app_id}&app_key=${key}`;
 
   axios
