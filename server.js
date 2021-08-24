@@ -2,10 +2,11 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 
-require('dotenv').config();
+require("dotenv").config();
 const port = process.env.PORT;
-const user = process.env.USER;
+const user = process.env.USERA;
 const password = process.env.PASSWORD;
+console.log(port, user, password);
 
 const recipeData = require("./controllers/recipe");
 const nutertionHandle = require("./contollers/Nutertion.controller");
@@ -19,7 +20,8 @@ const {
 
 mongoose
   .connect(
-    `mongodb+srv://${user}:${password}@cluster0.jw3jv.mongodb.net/nutri?retryWrites=true&w=majority`, {
+    `mongodb+srv://${user}:${password}@cluster0.jw3jv.mongodb.net/nutri?retryWrites=true&w=majority`,
+    {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     }
